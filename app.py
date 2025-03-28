@@ -1,7 +1,8 @@
+from huggingface_hub import hf_hub_download
+import os
 import streamlit as st
 import pandas as pd
 import torch
-import os
 from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import DataFrameLoader
 from langchain.text_splitter import CharacterTextSplitter
@@ -26,8 +27,8 @@ else:
 st.set_page_config(page_title="Frontlett COVID-19 Chatbot", page_icon="🤖")
 
 # Load Logo
-logo_path = "logo.png"  # Change this to your logo file path
-st.image(logo_path, width=200)  # Display logo
+logo_path = "logo.png"
+st.image(logo_path, width=200)
 
 st.title("COVID-19 Customer Support Chatbot 🤖")
 st.write("Ask me any question about COVID-19!")
@@ -35,7 +36,7 @@ st.write("Ask me any question about COVID-19!")
 # Load FAQ Data
 @st.cache_data
 def load_faq_data():
-    file_path = "COVID19_FAQ.csv"  # Change to your CSV filename
+    file_path = "COVID19_FAQ.csv"
     df = pd.read_csv(file_path)
     df["text"] = df["questions"] + " " + df["answers"]
     return df
@@ -53,11 +54,17 @@ def create_vector_store(data):
 
 vectorstore = create_vector_store(df)
 
+# Download Model from Hugging Face
+MODEL_REPO = "TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF"  # Change to the correct model repo 
+MODEL_FILENAME = "tinyllama-1.1b-chat-v1.0.Q3_K_M.gguf"
+
+model_path = hf_hub_download(repo_id=MODEL_REPO, filename=MODEL_FILENAME)
+
 # Load Llama Model
 llm = LlamaCpp(
-    model_path="C:/Users/HomePC/Documents/modelstorage/tinyllama-1.1b-chat-v1.0.Q3_K_M.gguf",
-    n_ctx=1024,  # Reduced from 2048 to 1024 for faster response
-    n_batch=32,  # Adjust batch size for efficiency
+    model_path=model_path,
+    n_ctx=1024,
+    n_batch=32,
     verbose=True
 )
 
