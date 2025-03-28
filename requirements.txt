@@ -1,13 +1,8 @@
-streamlit==1.32.2
-llama-cpp-python==0.2.11
-torch==2.2.1
-torchvision==0.17.1
-torchaudio==2.2.1
-langchain==0.1.14
+streamlit
+langchain
 langchain-community
-langchain-huggingface==0.0.6
-faiss-cpu==1.7.4
-nest-asyncio==1.5.8
-huggingface-hub==0.20.3
-numpy==1.26.4
+llama-cpp-python
+huggingface-hub
+numpy
+requests
 
