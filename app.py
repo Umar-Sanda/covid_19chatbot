@@ -55,7 +55,7 @@ def create_vector_store(data):
 vectorstore = create_vector_store(df)
 
 # Download Model from Hugging Face
-MODEL_REPO = "TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF"  # Change to the correct model repo 
+MODEL_REPO = "TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF"
 MODEL_FILENAME = "tinyllama-1.1b-chat-v1.0.Q3_K_M.gguf"
 
 model_path = hf_hub_download(repo_id=MODEL_REPO, filename=MODEL_FILENAME)
