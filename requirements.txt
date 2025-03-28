@@ -1,8 +1,10 @@
 streamlit
+torch
 langchain
 langchain-community
 llama-cpp-python
+langchain-huggingface
 huggingface-hub
-numpy
 requests
-
+nest-asyncio
+numpy
