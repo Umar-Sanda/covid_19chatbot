@@ -8,3 +8,4 @@ huggingface-hub
 requests
 nest-asyncio
 numpy
+faiss-cpu
