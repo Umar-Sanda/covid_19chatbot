@@ -1,10 +1,9 @@
 streamlit
+pandas
 torch
 langchain
 langchain-community
 langchain-huggingface
-huggingface_hub
-nest_asyncio
-pandas
-sentence-transformers
 faiss-cpu
+nest-asyncio
+huggingface_hub
